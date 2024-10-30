@@ -3,37 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prediction Results</title>
+    <title>Classic BIG-SMALL Prediction</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>BN LAST KING Prediction Results</h1>
+        <h1 class="classic-header">BIG-SMALL Prediction Results</h1>
 
-        <div class="timer">
-            <h2>Period: <span id="period30s">2024103001</span></h2>
-            <h3>Countdown: <span id="timer30s">  3 0  :  0 0 </span></h3>
+        <!-- Period and Timer Display -->
+        <div class="timer-box">
+            <div class="period-box">
+                <h2>Period Number</h2>
+                <div id="period30s" class="classic-period">Loading...</div>
+            </div>
+            <div class="timer">
+                <h2>Next Result In</h2>
+                <div id="timer30s" class="classic-timer">00:00</div>
+            </div>
         </div>
 
-        <div class="result-box">
-            <h3>Upcoming Result:</h3>
-            <p id="result">BIG</p>
+        <!-- Result Display -->
+        <div class="result-box classic-border">
+            <h2>Result:</h2>
+            <div id="result" class="bling-bling-text">Waiting for next result...</div>
         </div>
 
-        <table class="result-history">
+        <!-- Result History Table -->
+        <h2 class="classic-header">Result History</h2>
+        <table class="result-history classic-border">
             <thead>
                 <tr>
-                    <th>Period</th>
+                    <th>Period Number</th>
                     <th>Result</th>
                 </tr>
             </thead>
             <tbody id="history">
-                <!-- Result history will be appended here -->
+                <!-- History will be dynamically added here -->
             </tbody>
         </table>
 
+        <!-- Telegram Join Button -->
         <div class="telegram-link">
-            <a href="https://t.me/BNLASTKINGHACK" target="_blank">Join Our Telegram Channel</a>
+            <a href="https://t.me/BNLASTKINGHACK" target="_blank" class="classic-button">Join Telegram: BN LAST KING</a>
         </div>
     </div>
 

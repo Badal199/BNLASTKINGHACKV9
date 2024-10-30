@@ -1,66 +1,42 @@
-const resultDisplay = document.getElementById('result');
-const periodDisplay = document.getElementById('period30s');
-const timerDisplay = document.getElementById('timer30s');
-const historyTable = document.getElementById('history');
+document.addEventListener("DOMContentLoaded", function () {
+    let timerElement = document.getElementById("timer30s");
+    let periodElement = document.getElementById("period30s");
+    let resultElement = document.getElementById("result");
+    let historyElement = document.getElementById("history");
 
-// Pattern of results to display (BIG, SMALL, alternating)
-const resultsPattern = ['BIG', 'SMALL', 'BIG', 'SMALL', 'SMALL', 'BIG', 'SMALL', 'BIG', 'BIG', 'SMALL', 'SMALL'];
+    let results = ["BIG", "SMALL", "BIG", "SMALL", "SMALL", "BIG", "SMALL", "BIG", "BIG", "SMALL", "SMALL"];
+    let currentResultIndex = 0;
 
-// To keep track of the current period number
-let lastPeriodNumber = '';
+    // Timer setup
+    let timer = setInterval(function () {
+        let now = new Date();
+        let seconds = now.getSeconds();
+        let remainingSeconds = 30 - (seconds % 30);
+        timerElement.textContent = `00:${String(remainingSeconds).padStart(2, "0")}`;
 
-// Function to add result to history table
-function addToHistory(periodNumber, result) {
-    const row = document.createElement('tr');
-    const periodCell = document.createElement('td');
-    const resultCell = document.createElement('td');
+        if (remainingSeconds === 30) {
+            // Update period number
+            let minutes = now.getMinutes();
+            let totalMinutes = now.getHours() * 60 + minutes;
+            let periodNumber = `${now.getFullYear()}${(now.getMonth() + 1).toString().padStart(2, "0")}${now.getDate().toString().padStart(2, "0")}30${totalMinutes * 2 + (seconds >= 30 ? 1 : 0)}`;
+            periodElement.textContent = periodNumber;
 
-    periodCell.textContent = periodNumber;
-    resultCell.textContent = result;
+            // Show result and update result history
+            let result = results[currentResultIndex % results.length];
+            currentResultIndex++;
 
-    row.appendChild(periodCell);
-    row.appendChild(resultCell);
+            resultElement.classList.remove("rainbow");  // Reset bling-bling effect
+            resultElement.style.opacity = 0;  // Hide result briefly
+            setTimeout(() => {
+                resultElement.textContent = result;
+                resultElement.style.opacity = 1;
+                resultElement.classList.add("rainbow");  // Apply bling-bling effect
 
-    // Append the row to the history table
-    historyTable.appendChild(row);
-}
-
-// Function to update the period and result
-function updatePeriodAndResult() {
-    const calendar = new Date();
-    const seconds = calendar.getUTCSeconds();
-    const remainingSeconds = 30 - (seconds % 30);  // Adjust for 30-second interval
-    const totalMinutes = calendar.getUTCHours() * 60 + calendar.getUTCMinutes();
-
-    // Update period number for 30-second interval
-    const periodNumber = `2024${String(calendar.getUTCMonth() + 1).padStart(2, '0')}${String(calendar.getUTCDate()).padStart(2, '0')}30${String(1 + totalMinutes * 2 + (seconds >= 30 ? 1 : 0))}`;
-
-    // Only update the result if the period number has changed
-    if (periodNumber !== lastPeriodNumber) {
-        lastPeriodNumber = periodNumber;
-
-        // Display random result from the pattern
-        const resultIndex = Math.floor(Math.random() * resultsPattern.length);
-        const result = resultsPattern[resultIndex];
-        
-        // Show result with a slow fade-in effect
-        resultDisplay.style.opacity = 0;
-        setTimeout(() => {
-            resultDisplay.innerText = result;
-            resultDisplay.style.opacity = 1;
-        }, 200);  // Delay to start fade-in
-
-        // Add the period and result to the history table
-        addToHistory(periodNumber, result);
-    }
-
-    // Update the period number in the UI
-    periodDisplay.innerText = periodNumber;
-
-    // Update timer in format "  x x  :  x x"
-    const formattedTime = `  0 0  :  ${String(remainingSeconds).padStart(2, '0')}`.replace(/(?<=\d)(?=\d)/g, " ");
-    timerDisplay.innerText = formattedTime;
-}
-
-// Update the timer and result every second
-setInterval(updatePeriodAndResult, 1000);
+                // Add to history
+                let newRow = document.createElement("tr");
+                newRow.innerHTML = `<td>${periodNumber}</td><td>${result}</td>`;
+                historyElement.appendChild(newRow);
+            }, 500);
+        }
+    }, 1000);
+});

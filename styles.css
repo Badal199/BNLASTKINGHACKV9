@@ -1,76 +1,126 @@
+/* General classic design with elegant, traditional typography and layout */
 body {
-    background-color: pink;
-    font-family: Arial, sans-serif;
+    font-family: 'Georgia', serif;  /* Classic serif font */
+    background-color: #f5f5f5;  /* Light grey background for a clean look */
+    color: #333;  /* Darker grey for text */
+    margin: 0;
+    padding: 0;
     text-align: center;
 }
 
 .container {
-    margin: 0 auto;
+    width: 90%;
+    max-width: 1000px;
+    margin: 50px auto;
     padding: 20px;
-    width: 80%;
-    max-width: 600px;
-    background-color: white;
-    border: 3px solid rgb(255, 0, 255); /* Pink border */
+    background-color: white;  /* White background for content */
     border-radius: 10px;
-    box-shadow: 0 0 15px rgba(255, 0, 255, 0.7);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);  /* Light shadow for depth */
 }
 
-h1 {
-    color: darkblue;
-    text-shadow: 2px 2px 5px rgba(0, 0, 255, 0.5);
-}
-
-.timer {
+/* Classic Header Styles */
+h1.classic-header, h2.classic-header {
+    font-size: 2.5rem;
+    color: #2F4F4F;  /* Dark Slate Gray for a classic feel */
     margin-bottom: 20px;
 }
 
-#timer30s {
+h2 {
+    color: #444;
+}
+
+.timer-box {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+/* Period and Timer Box Styles */
+.period-box, .timer {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 2px solid #333;
+    border-radius: 8px;
+    width: 45%;
+}
+
+/* Period number text */
+#period30s.classic-period {
     font-size: 2rem;
-    letter-spacing: 5px;
-    color: darkred;
-}
-
-.result-box {
-    background-color: lightyellow;
-    border: 2px solid green;
-    border-radius: 5px;
-    padding: 15px;
-    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
-}
-
-#result {
-    font-size: 1.5rem;
-    color: darkgreen;
+    color: #8B0000;  /* Dark Red for period number */
     font-weight: bold;
-    opacity: 0;
-    transition: opacity 1.5s ease-in;  /* Fade-in effect */
 }
 
-.result-history {
-    margin-top: 20px;
+/* Timer text */
+#timer30s.classic-timer {
+    font-size: 2rem;
+    color: #4682B4;  /* Steel blue for timer */
+}
+
+/* Result Box with RGB Bling-Bling Text Effect */
+.result-box.classic-border {
+    margin: 30px 0;
+    padding: 20px;
+    border: 3px solid #dcdcdc;
+    border-radius: 10px;
+    background-color: #fafafa;
+}
+
+.bling-bling-text {
+    font-size: 2.2rem;
+    color: #00BFFF;  /* Initial color for result */
+    font-weight: bold;
+    transition: color 0.5s ease-in-out;
+}
+
+/* RGB Bling-Bling animation */
+.bling-bling-text.rainbow {
+    animation: rgb-text-blink 2s infinite alternate;
+}
+
+@keyframes rgb-text-blink {
+    0% { color: #FF0000; }  /* Red */
+    33% { color: #00FF00; } /* Green */
+    66% { color: #0000FF; } /* Blue */
+    100% { color: #FF1493; } /* Pink */
+}
+
+/* History Table */
+.result-history.classic-border {
     width: 100%;
     border-collapse: collapse;
-    text-align: center;
+    border: 2px solid #333;
+    margin: 20px 0;
 }
 
 .result-history th, .result-history td {
-    border: 2px solid rgb(255, 0, 255);  /* Pink border */
-    padding: 10px;
-    font-size: 1rem;
+    padding: 12px;
+    border: 1px solid #ccc;
+    text-align: center;
+    color: #333;
 }
 
-.telegram-link a {
+.result-history th {
+    background-color: #f8f8f8;
+    font-weight: bold;
+}
+
+.result-history td {
+    background-color: #f0f0f0;
+}
+
+/* Classic Button for Telegram */
+.telegram-link .classic-button {
     display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: rgb(0, 132, 255);
+    padding: 15px 30px;
+    background-color: #4169E1;  /* Royal Blue */
     color: white;
-    text-decoration: none;
     font-size: 1.2rem;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 132, 255, 0.7);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s;
 }
 
-.telegram-link a:hover {
-    background-color: rgb(0, 102, 255);
+.telegram-link .classic-button:hover {
+    background-color: #1E90FF;  /* Dodger Blue on hover */
 }
