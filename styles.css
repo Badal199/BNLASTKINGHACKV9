@@ -1,0 +1,76 @@
+body {
+    background-color: pink;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    background-color: white;
+    border: 3px solid rgb(255, 0, 255); /* Pink border */
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.7);
+}
+
+h1 {
+    color: darkblue;
+    text-shadow: 2px 2px 5px rgba(0, 0, 255, 0.5);
+}
+
+.timer {
+    margin-bottom: 20px;
+}
+
+#timer30s {
+    font-size: 2rem;
+    letter-spacing: 5px;
+    color: darkred;
+}
+
+.result-box {
+    background-color: lightyellow;
+    border: 2px solid green;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+#result {
+    font-size: 1.5rem;
+    color: darkgreen;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 1.5s ease-in;  /* Fade-in effect */
+}
+
+.result-history {
+    margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.result-history th, .result-history td {
+    border: 2px solid rgb(255, 0, 255);  /* Pink border */
+    padding: 10px;
+    font-size: 1rem;
+}
+
+.telegram-link a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: rgb(0, 132, 255);
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 132, 255, 0.7);
+}
+
+.telegram-link a:hover {
+    background-color: rgb(0, 102, 255);
+}
